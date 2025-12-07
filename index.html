@@ -1,33 +1,1078 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hey! I am Divyesh</title>
-    <meta
-      name="description"
-      content="Divyesh's professional portfolio showcasing expertise in microservices architecture, CI/CD optimization, SQL query tuning, and team leadership."
-    />
-    <meta
-      name="keywords"
-      content="Divyesh Ladva, Portfolio, Software Architect, Microservices, CI/CD, DevOps, SQL Optimization, Team Lead, Web Development"
-    />
-    <meta name="author" content="Divyesh Ladva" />
+    <title>Divyesh Ladva | Senior Software Engineer</title>
 
-    <meta property="og:title" content="Divyesh Ladva - Portfolio" />
-    <meta
-      property="og:description"
-      content="Divyesh's professional portfolio showcasing expertise in microservices architecture, CI/CD optimization, SQL query tuning, and team leadership."
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.divyeshladva.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              dark: {
+                900: "#0a0a0a", // Deep black background
+                800: "#121212", // Slightly lighter panel
+                700: "#1e1e1e", // Card background
+                600: "#2d2d2d", // Borders
+              },
+              accent: {
+                DEFAULT: "#10b981", // Emerald 500
+                hover: "#059669", // Emerald 600
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom Scrollbar for the content area (now targets the entire body) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a; /* Body background color */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2d2d2d;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #404040;
+      }
+
+      /* Tab Animation */
+      .tab-content {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .tab-content.active {
+        display: block;
+        opacity: 1;
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Active Tab Styling */
+      .nav-btn.active {
+        color: #10b981; /* accent color */
+        border-bottom: 2px solid #10b981;
+        background-color: rgba(16, 185, 129, 0.05);
+      }
+      /* Filter Button Active Style */
+      .filter-btn.active {
+        background-color: #10b981; /* accent color */
+        color: #0a0a0a; /* dark text */
+        border-color: #10b981;
+      }
+
+      /* FIX FOR SCROLL DISCOVERABILITY */
+      /* This applies the gradient fade to the right edge of the nav bar on small screens */
+      .scroll-fade-mask {
+        /* Create a layer that fades from transparent (left) to the background color (right) */
+        mask-image: linear-gradient(
+          to right,
+          black 85%,
+          /* Fully opaque for most of the content */ transparent 100%
+            /* Fade to transparent at the end */
+        );
+        /* Ensure the mask is only visible when scrolling is possible (on small screens) */
+        position: relative;
+      }
+
+      /* On medium and larger screens, remove the mask using a media query */
+      @media (min-width: 768px) {
+        .scroll-fade-mask {
+          mask-image: none;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <pre>
-Hello Visitor! This awesome website is under active development.
-You can visit below sites until this awesomeness is unleashed
-Github: <a href="https://github.com/dvdagreat" target="__blank"> Open Link </a>
-Youtube: <a href="https://youtube.com/@DivyeshLadva" target="__blank"> Open Link </a>
-Linkedin: <a href="https://www.linkedin.com/in/divyeshladva" target="__blank"> Open Link </a>
-  </pre>
+  <body class="bg-dark-900 text-gray-300 font-sans selection:bg-accent selection:text-white">
+    <nav class="sticky top-0 bg-dark-900/95 backdrop-blur border-b border-dark-600 z-20">
+      <div class="max-w-5xl mx-auto px-4">
+        <div
+          class="flex overflow-x-auto scrollbar-hide md:justify-center md:space-x-8 scroll-fade-mask"
+        >
+          <button
+            onclick="switchTab('home')"
+            id="tab-home"
+            class="nav-btn active flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Home
+          </button>
+          <button
+            onclick="switchTab('about')"
+            id="tab-about"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            About
+          </button>
+          <button
+            onclick="switchTab('experience')"
+            id="tab-experience"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Experience
+          </button>
+          <button
+            onclick="switchTab('skills')"
+            id="tab-skills"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Skills
+          </button>
+          <button
+            onclick="switchTab('certifications')"
+            id="tab-certifications"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Certifications
+          </button>
+          <button
+            onclick="switchTab('misc')"
+            id="tab-misc"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Misc
+          </button>
+          <button
+            onclick="switchTab('contact')"
+            id="tab-contact"
+            class="nav-btn flex-1 md:flex-none px-4 py-5 text-sm font-medium text-gray-400 hover:text-white transition-colors whitespace-nowrap focus:outline-none"
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="relative bg-dark-900 p-4 md:p-8">
+      <div class="max-w-3xl mx-auto pb-32">
+        <div id="home" class="tab-content active">
+          <div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+            <div
+              class="w-40 h-40 md:w-56 md:h-56 rounded-full flex items-center justify-center mb-8 shadow-2xl border-4 border-dark-600 relative overflow-hidden"
+            >
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4D03AQFK6rMt5oZFTQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1680453228096?e=1766620800&v=beta&t=5dZkZzxggJoERn6vtonLPhn0lyv24rZYEDQmX4fVQcA"
+                onerror="this.onerror=null; this.src='https://placehold.co/224x224/121212/aaaaaa?text=DL';"
+                alt="Divyesh Ladva Profile Photo"
+                class="w-full h-full object-cover transform scale-105"
+              />
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight mb-3">
+              Divyesh Ladva
+            </h1>
+
+            <p class="text-accent text-lg md:text-xl font-medium uppercase tracking-widest mb-8">
+              Senior Software Engineer
+            </p>
+
+            <div class="flex space-x-6 mb-10">
+              <a
+                href="https://www.linkedin.com/in/divyeshladva/"
+                target="_blank"
+                class="w-12 h-12 rounded-full bg-dark-800 border border-dark-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent hover:bg-dark-700 transition-all duration-200 text-xl"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/dvdagreat"
+                target="_blank"
+                class="w-12 h-12 rounded-full bg-dark-800 border border-dark-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent hover:bg-dark-700 transition-all duration-200 text-xl"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="mailto:ladoodivyesh@gmail.com"
+                class="w-12 h-12 rounded-full bg-dark-800 border border-dark-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent hover:bg-dark-700 transition-all duration-200 text-xl"
+                title="Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+
+            <div class="text-center">
+              <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+                <i class="fas fa-map-marker-alt"></i> Based in India
+              </p>
+            </div>
+
+            <div class="mt-12">
+              <button
+                onclick="switchTab('about')"
+                class="px-8 py-3 bg-dark-800 hover:bg-dark-700 border border-dark-600 rounded-full text-white transition-all text-sm font-medium"
+              >
+                Get to know me <i class="fas fa-arrow-right ml-2 text-accent"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="about" class="tab-content">
+          <header class="mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hello, I'm Divyesh.</h2>
+
+            <p class="text-lg text-gray-400 leading-relaxed">
+              A results-driven <span class="text-accent">Software Engineer</span> with over 5 years
+              of experience in architecting scalable & modular software solutions. I specialize in
+              breaking down complex monoliths, optimizing performance, and mentoring
+              cross-functional teams to deliver excellence.
+            </p>
+          </header>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="bg-dark-800 p-6 rounded-lg border border-dark-600 hover:border-gray-500 transition-colors"
+            >
+              <div class="flex items-center mb-4">
+                <i class="fas fa-graduation-cap text-accent text-xl mr-3"></i>
+                <h3 class="text-xl font-semibold text-white">Education</h3>
+              </div>
+              <h4 class="text-white font-medium">Bachelor's degree, Computer Science</h4>
+              <p class="text-sm text-gray-500 mb-1">Gujarat Technological University</p>
+              <p class="text-xs text-gray-500">2019 – 2022</p>
+            </div>
+
+            <div
+              class="bg-dark-800 p-6 rounded-lg border border-dark-600 hover:border-gray-500 transition-colors"
+            >
+              <div class="flex items-center mb-4">
+                <i class="fas fa-bolt text-accent text-xl mr-3"></i>
+                <h3 class="text-xl font-semibold text-white">Current Focus</h3>
+              </div>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                <li class="flex items-start">
+                  <span class="text-accent mr-2">▹</span> Microservices
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent mr-2">▹</span> Business Focused AI/ML
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent mr-2">▹</span> Cloud Computing
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent mr-2">▹</span> Backend Engineering
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="experience" class="tab-content">
+          <h2 class="text-2xl font-bold text-white mb-8 border-b border-dark-600 pb-2">
+            Work History
+          </h2>
+
+          <div class="space-y-8 border-l-2 border-dark-600 ml-3 pl-8 relative">
+            <div class="relative">
+              <span
+                class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-dark-900 bg-accent"
+              ></span>
+              <h3 class="text-xl font-bold text-white">Senior Software Engineer</h3>
+              <div class="text-accent font-medium mb-1">Tatvasoft</div>
+              <div class="text-sm text-gray-500 mb-4">Oct 2022 – Present</div>
+              <ul class="space-y-3 text-sm text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Significantly optimized CI/CD pipelines, reducing build times by
+                    <strong class="text-gray-200">90%</strong> through the elimination of redundant
+                    steps and implementation of
+                    <strong class="text-gray-200">esbuild</strong> (replaces webpack), resulting in
+                    substantial compute cost savings.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    ><strong class="text-gray-200">Mentored and led</strong> cross-functional
+                    developer teams consisting of
+                    <strong class="text-gray-200">10+ developers</strong>, providing technical
+                    guidance and fostering skill development which helped the organisation train
+                    developers 50% faster.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Decoupled monolithic code into microservices and split into more modular and
+                    maintainable code resulting in improved DX.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Identified and
+                    <strong class="text-gray-200"
+                      >refactored critical, low-performing SQL queries</strong
+                    >, improving response times by ~76% for data intensive operations.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Conducted thorough code reviews and promoted best practices in clean code,
+                    scalability, and performance across engineering teams which resulted in
+                    <strong class="text-gray-200">20% reduction in bugs</strong>.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="relative">
+              <span
+                class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-dark-900 bg-gray-600"
+              ></span>
+              <h3 class="text-lg font-bold text-white">Software Engineer</h3>
+              <div class="text-gray-400 font-medium mb-1">Fiare</div>
+              <div class="text-sm text-gray-500 mb-4">May 2021 – Sep 2022</div>
+              <ul class="space-y-3 text-sm text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Led the migration of a 20-year-old legacy monolithic e-commerce project
+                    consisting of 10+ websites to a modern, containerized
+                    <strong class="text-gray-200">microservices architecture</strong>, significantly
+                    enhancing scalability, fault tolerance and deployment efficiency.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Implemented an API-based architecture, introducing
+                    <strong class="text-gray-200">150+ new REST endpoints</strong> and replacing
+                    legacy server-side rendering to
+                    <strong class="text-gray-200">reduce page load times by ~32%</strong>.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Identified and resolved critical code quality issues and security
+                    vulnerabilities for 5 projects using static analysis tools like Detectify, Snyk,
+                    and SonarLint, significantly reducing technical debt.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Conducted in-depth analysis to pinpoint and resolve performance bottlenecks
+                    within critical system components, resulting in measurable improvements in
+                    application throughput and resource utilization.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="relative">
+              <span
+                class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-dark-900 bg-gray-600"
+              ></span>
+              <h3 class="text-lg font-bold text-white">Junior Software Engineer</h3>
+              <div class="text-gray-400 font-medium mb-1">Elite Infotech</div>
+              <div class="text-sm text-gray-500 mb-4">Oct 2020 – Apr 2021</div>
+              <ul class="space-y-3 text-sm text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Created foundational web applications for
+                    <strong class="text-gray-200">8+ emerging startups</strong> utilizing Node.js &
+                    WordPress.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Developed <strong class="text-gray-200">3 custom WordPress plugins</strong>,
+                    addressing specific client needs for enhanced functionality and promoting
+                    feature reusability.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check mt-1 text-accent mr-3 text-xs"></i>
+                  <span
+                    >Integrated third-party APIs including Mailchimp, Zapier, Stripe, and PayPal,
+                    thereby optimizing workflow efficiencies.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="skills" class="tab-content">
+          <h2 class="text-2xl font-bold text-white mb-8 border-b border-dark-600 pb-2">
+            Technical Expertise & Stack
+          </h2>
+
+          <div class="space-y-10">
+            <div>
+              <h3 class="text-lg font-semibold text-accent mb-4 uppercase tracking-widest text-xs">
+                Programming Languages & Runtimes
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Typescript / Javascript</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Node.js</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Rust</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Go (Golang)</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >PHP</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >SQL</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >BUNjs</span
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-accent mb-4 uppercase tracking-widest text-xs">
+                Architecture & Distributed Systems
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Microservices</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Event Driven Architecture (EDA)</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >REST API Design</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Apache Kafka</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >AWS SQS (Message Queues)</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Database Tuning</span
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-accent mb-4 uppercase tracking-widest text-xs">
+                Cloud Services & DevOps
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >AWS Lambda</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Serverless Framework</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >AWS S3, SQS, SNS, EC2, ECS, Fargate</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Docker</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Shell Scripting</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >CI/CD Optimization</span
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-accent mb-4 uppercase tracking-widest text-xs">
+                Frameworks, Libraries & Databases
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Nestjs</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >TSyringe</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >React</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Wordpress</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >MariaDB</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >MongoDB</span
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-accent mb-4 uppercase tracking-widest text-xs">
+                Tools, Security & Build
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Git (Github & Bitbucket)</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >Esbuild, Vite, Webpack</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >JWT (with refresh tokens)</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >pnpm, npm</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >AES, RSA, Argon/bcrypt</span
+                >
+                <span
+                  class="px-4 py-1.5 bg-dark-800 text-gray-300 rounded-full text-sm border border-dark-600 hover:bg-dark-700 transition-colors"
+                  >OAuth2</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="certifications" class="tab-content">
+          <h2 class="text-2xl font-bold text-white mb-8 border-b border-dark-600 pb-2">
+            Certifications & Credentials
+          </h2>
+
+          <div class="mb-8 p-4 bg-dark-800 rounded-lg border border-dark-600">
+            <h3 class="text-sm font-medium text-gray-300 mb-3">Filter by Tag (Select Multiple):</h3>
+            <div id="filter-container" class="flex flex-wrap gap-2">
+              <button
+                onclick="filterCertificates('All', this)"
+                data-tag="All"
+                class="filter-btn active px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                All
+              </button>
+              <button
+                onclick="filterCertificates('Cloud Computing', this)"
+                data-tag="Cloud Computing"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                Cloud Computing
+              </button>
+              <button
+                onclick="filterCertificates('Microservices', this)"
+                data-tag="Microservices"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                Microservices
+              </button>
+              <button
+                onclick="filterCertificates('Serverless', this)"
+                data-tag="Serverless"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                Serverless
+              </button>
+              <button
+                onclick="filterCertificates('Intermediate', this)"
+                data-tag="Intermediate"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                Intermediate
+              </button>
+              <button
+                onclick="filterCertificates('International Languages', this)"
+                data-tag="International Languages"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                International Languages
+              </button>
+              <button
+                onclick="filterCertificates('Beginner', this)"
+                data-tag="Beginner"
+                class="filter-btn px-3 py-1 text-xs font-medium rounded-full border border-dark-600 text-gray-400 hover:bg-dark-700 transition-colors"
+              >
+                Beginner
+              </button>
+            </div>
+          </div>
+
+          <div id="certificate-list" class="space-y-6">
+            <div
+              class="certificate-card bg-dark-800 p-5 rounded-lg border border-dark-600 hover:border-accent transition-all duration-300"
+              data-tags="Cloud Computing,Microservices,Serverless,Intermediate"
+            >
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-start">
+                <div class="mb-3 md:mb-0 text-left w-full">
+                  <h3 class="text-lg font-bold text-white mb-1">
+                    AWS Certified Solutions Architect – Associate
+                  </h3>
+                  <p class="text-sm text-gray-400">Issued by Amazon Web Services</p>
+                  <div class="flex flex-wrap gap-2 mt-2">
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-accent/10 text-accent"
+                      >Cloud Computing</span
+                    >
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-500/10 text-blue-400"
+                      >Microservices</span
+                    >
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-orange-500/10 text-orange-400"
+                      >Serverless</span
+                    >
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-purple-500/10 text-purple-400"
+                      >Intermediate</span
+                    >
+                  </div>
+                </div>
+                <a
+                  href="https://www.credly.com/badges/88d562ba-48b0-4dc9-b5cd-4986347db772/public_url"
+                  target="_blank"
+                  class="flex items-center justify-center text-accent hover:text-accent-hover text-sm font-medium w-full md:w-auto px-4 py-2 rounded-full bg-accent/10 hover:bg-accent/20 transition-colors shrink-0 mt-3 md:mt-0"
+                >
+                  Verify Credential
+                  <i class="fas fa-external-link-alt text-xs ml-2"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="certificate-card bg-dark-800 p-5 rounded-lg border border-dark-600 hover:border-gray-500 transition-all duration-300"
+              data-tags="International Languages,Beginner"
+            >
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-start">
+                <div class="mb-3 md:mb-0 text-left w-full">
+                  <h3 class="text-lg font-bold text-white mb-1">
+                    Japanese Language Proficiency Test (JLPT) N5
+                  </h3>
+                  <p class="text-sm text-gray-400">Issued by Japan Foundation</p>
+                  <div class="flex flex-wrap gap-2 mt-2">
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-yellow-500/10 text-yellow-400"
+                      >International Languages</span
+                    >
+                    <span
+                      class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-500/10 text-green-400"
+                      >Beginner</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="flex items-center justify-center text-sm text-gray-500 w-full md:w-auto px-4 py-2 border border-dark-600 rounded-full shrink-0 mt-3 md:mt-0"
+                >
+                  <i class="fas fa-check mr-2"></i> Certificate on file
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="misc" class="tab-content">
+          <h2 class="text-2xl font-bold text-white mb-8 border-b border-dark-600 pb-2">
+            Miscellaneous
+          </h2>
+
+          <div class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-semibold text-white flex items-center">
+                <i class="fab fa-github text-accent mr-3"></i> GitHub Projects
+              </h3>
+              <a
+                href="https://github.com/dvdagreat?tab=repositories"
+                target="_blank"
+                class="text-sm text-accent hover:underline font-medium flex items-center gap-1 shrink-0"
+              >
+                View all repositories <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a
+                href="https://github.com/dvdagreat/docker-multistage-typescript"
+                target="_blank"
+                class="block"
+              >
+                <div
+                  class="bg-dark-800 p-6 rounded-lg border border-dark-600 hover:border-accent transition-colors group h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex justify-between items-start mb-4">
+                      <h4
+                        class="text-white font-bold text-lg group-hover:text-accent transition-colors"
+                      >
+                        Multistage Docker build
+                      </h4>
+                      <span
+                        class="text-xs border border-dark-600 px-2 py-1 rounded text-gray-400 shrink-0"
+                        >Node.js / Docker</span
+                      >
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                      A template repository demonstrating best practices for creating efficient,
+                      secure, and small Docker images for TypeScript/Node.js applications by
+                      utilizing a multi-stage build process to separate the development/build
+                      environment from the minimal runtime environment.
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              <a href="https://github.com/dvdagreat/ms-ecomm-1" target="_blank" class="block">
+                <div
+                  class="bg-dark-800 p-6 rounded-lg border border-dark-600 hover:border-accent transition-colors group h-full flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex justify-between items-start mb-4">
+                      <h4
+                        class="text-white font-bold text-lg group-hover:text-accent transition-colors"
+                      >
+                        Ecommerce Microservices
+                      </h4>
+                      <span
+                        class="text-xs border border-dark-600 px-2 py-1 rounded text-gray-400 shrink-0"
+                        >Microservices / EDA</span
+                      >
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                      A foundational project illustrating an event-driven architecture (EDA) for an
+                      e-commerce platform, featuring services for products, orders, and users, all
+                      communicating asynchronously via message queues for scalability and fault
+                      tolerance.
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-semibold text-white flex items-center">
+                <i class="fab fa-youtube text-red-500 mr-3"></i> Top Videos
+              </h3>
+              <a
+                href="https://www.youtube.com/@DivyeshLadva"
+                target="_blank"
+                class="text-sm text-accent hover:underline font-medium flex items-center gap-1 shrink-0"
+              >
+                View all videos <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="https://www.youtube.com/watch?v=_fhxglapSbM" target="_blank" class="block">
+                <div
+                  class="bg-dark-800 rounded-lg border border-dark-600 overflow-hidden hover:border-accent transition-colors duration-300"
+                >
+                  <div
+                    class="aspect-video bg-dark-700 relative group cursor-pointer flex items-center justify-center"
+                  >
+                    <img
+                      src="https://placehold.co/600x400/121212/aaaaaa?text=gRPC+Node.js"
+                      onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/aaaaaa?text=Video+Thumbnail'"
+                      alt="Video Thumbnail"
+                      class="w-full h-full object-cover opacity-70"
+                    />
+                    <i
+                      class="fas fa-play-circle text-5xl text-white/80 group-hover:text-accent absolute transition-colors"
+                    ></i>
+                  </div>
+                  <div class="p-4">
+                    <h4 class="text-white font-bold mb-1 line-clamp-2">
+                      Build Superfast APIs with gRPC + Node.js 🔥 | HTTP/2.0 | Server Reflections |
+                      Protocol Buffers
+                    </h4>
+                    <p class="text-gray-400 text-sm line-clamp-3">
+                      A detailed tutorial covering how to use gRPC (Google Remote Procedure Call)
+                      with Node.js to create highly efficient, low-latency microservices. This video
+                      explores the benefits of HTTP/2.0, the use of Protocol Buffers for structured
+                      data exchange, and implementing Server Reflections.
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              <a href="https://www.youtube.com/watch?v=vuSXFltK340" target="_blank" class="block">
+                <div
+                  class="bg-dark-800 rounded-lg border border-dark-600 overflow-hidden hover:border-accent transition-colors duration-300"
+                >
+                  <div
+                    class="aspect-video bg-dark-700 relative group cursor-pointer flex items-center justify-center"
+                  >
+                    <img
+                      src="https://placehold.co/600x400/121212/aaaaaa?text=TSyringe+DI"
+                      onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/aaaaaa?text=Video+Thumbnail'"
+                      alt="Video Thumbnail"
+                      class="w-full h-full object-cover opacity-70"
+                    />
+                    <i
+                      class="fas fa-play-circle text-5xl text-white/80 group-hover:text-accent absolute transition-colors"
+                    ></i>
+                  </div>
+                  <div class="p-4">
+                    <h4 class="text-white font-bold mb-1 line-clamp-2">
+                      TypeScript Dependency Injection using TSyringe | Instantiate your classes like
+                      a pro
+                    </h4>
+                    <p class="text-gray-400 text-sm line-clamp-3">
+                      An educational video focusing on implementing Dependency Injection (DI) in
+                      TypeScript projects using the TSyringe framework. It demonstrates how to
+                      effectively decouple components and manage class instantiation for better
+                      testing and maintainability.
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact" class="tab-content">
+          <h2 class="text-2xl font-bold text-white mb-8 border-b border-dark-600 pb-2">
+            Get In Touch
+          </h2>
+          <p class="text-gray-400 mb-8">
+            I am always open to discussing new projects, creative ideas, or opportunities to be part
+            of your vision.
+          </p>
+
+          <div class="bg-dark-800 p-8 rounded-lg border border-dark-600 max-w-lg space-y-6">
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-accent mr-4"
+              >
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-medium">Email Me</h3>
+                <a
+                  href="mailto:ladoodivyesh@gmail.com"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >ladoodivyesh@gmail.com</a
+                >
+              </div>
+            </div>
+
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-accent mr-4"
+              >
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-medium">Call/WhatsApp</h3>
+                <a
+                  href="tel:+919724402264"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >(+91) 97244 02264</a
+                >
+              </div>
+            </div>
+
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-accent mr-4"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-medium">LinkedIn</h3>
+                <a
+                  href="https://www.linkedin.com/in/divyeshladva/"
+                  target="_blank"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >linkedin.com/in/divyeshladva</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function switchTab(tabId) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll(".tab-content");
+        contents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Deactivate all buttons
+        const buttons = document.querySelectorAll(".nav-btn");
+        buttons.forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected tab content
+        document.getElementById(tabId).classList.add("active");
+
+        // Activate selected button
+        document.getElementById("tab-" + tabId).classList.add("active");
+
+        // Scroll to the top of the window when switching tabs
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // If switching to the Certifications tab, reset the filter to 'All'
+        if (tabId === "certifications") {
+          const allButton = document.querySelector('.filter-btn[data-tag="All"]');
+          if (allButton) {
+            filterCertificates("All", allButton);
+          }
+        }
+      }
+
+      function filterCertificates(tag, selectedButton) {
+        const certificateCards = document.querySelectorAll(".certificate-card");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const allButton = document.querySelector('.filter-btn[data-tag="All"]');
+
+        // --- 1. Update Active State and Handle 'All' Logic ---
+        if (tag === "All") {
+          // If 'All' is clicked, deactivate all others and activate 'All'
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          selectedButton.classList.add("active");
+        } else {
+          // If any other tag is clicked, toggle its state
+          selectedButton.classList.toggle("active");
+
+          // If a non-'All' tag is active, 'All' must be deactivated
+          if (selectedButton.classList.contains("active")) {
+            allButton.classList.remove("active");
+          }
+        }
+
+        // --- 2. Safety Check: If no non-'All' filters are active, default back to 'All' ---
+        let activeFilters = Array.from(filterButtons)
+          .filter(
+            (btn) => btn.classList.contains("active") && btn.getAttribute("data-tag") !== "All"
+          )
+          .map((btn) => btn.getAttribute("data-tag"));
+
+        if (activeFilters.length === 0) {
+          allButton.classList.add("active");
+        }
+
+        // Re-read activeFilters (will be empty if only 'All' is active)
+        activeFilters = Array.from(filterButtons)
+          .filter(
+            (btn) => btn.classList.contains("active") && btn.getAttribute("data-tag") !== "All"
+          )
+          .map((btn) => btn.getAttribute("data-tag"));
+
+        // --- 3. Filtering Logic (Additive: Card must match at least one active filter) ---
+        const showAllMode = allButton.classList.contains("active") && activeFilters.length === 0;
+
+        certificateCards.forEach((card) => {
+          const cardTagsString = card.getAttribute("data-tags");
+          const cardTags = cardTagsString.split(",").map((t) => t.trim()); // Safer split and trim
+
+          let isMatch = false;
+
+          if (showAllMode) {
+            isMatch = true;
+          } else {
+            // Check if the card's tags contain ANY of the active filters
+            for (const filterTag of activeFilters) {
+              if (cardTags.includes(filterTag)) {
+                isMatch = true;
+                break;
+              }
+            }
+          }
+
+          // Apply display based on match
+          if (isMatch) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Initialize the filter when the Certifications tab loads (by default, 'All' is selected)
+      window.addEventListener("load", () => {
+        // Check the current hash or state to determine the active tab on load (default to 'home')
+        const initialTab = "home";
+        switchTab(initialTab);
+
+        const initialAllButton = document.querySelector('.filter-btn[data-tag="All"]');
+        if (initialAllButton) {
+          // Initialize the filter to 'All' mode
+          filterCertificates("All", initialAllButton);
+        }
+      });
+    </script>
   </body>
 </html>
